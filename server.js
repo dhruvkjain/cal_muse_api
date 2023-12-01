@@ -15,7 +15,7 @@ app.post('/plot',(req,res)=>{
   });
   pythonProcess.stderr.on('data', (data) => {
     console.error(`Python stderr: ${data}`);
-    res.status(400).json("error");
+    res.status(400).json(data);
   });
   // pythonProcess.on('close', (code) => {
   //   console.log(`Python process exited with code ${code}`);
