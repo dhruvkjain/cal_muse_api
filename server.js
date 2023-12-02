@@ -6,19 +6,23 @@ app.use(cors());
 
 const { spawn } = require('child_process');
 
-spawn('pip install numpy',(error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error installing numpy: numpy`);
-    return;
+const installProcess = spawnspawn('pip', ['install', 'numpy']);
+installProcess.on('close', (code) => {
+  if (code === 0) {
+    console.log(`Package numpy installed successfully`);
+  } else {
+    console.error(`Error installing numpy`);
   }
-
-  // Output of the npm install command
-  console.log(`Package numpy installed successfully`);
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
 });
 
+// Capture and log the output of the process
+installProcess.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
 
+installProcess.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
 
 app.post('/plot',(req,res)=>{
   
