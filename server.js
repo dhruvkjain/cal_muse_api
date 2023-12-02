@@ -11,7 +11,10 @@ app.post('/plot',(req,res)=>{
 
   pythonProcess.stdout.on('data', (data) => {
     // console.log(`Python stdout: ${data}`); 
-    res.json(data);
+    let ans = {
+      data:data
+    }
+    res.json(ans);
   });
   pythonProcess.stderr.on('data', (data) => {
     console.error(`Python stderr: ${data}`);
@@ -21,7 +24,6 @@ app.post('/plot',(req,res)=>{
   //   console.log(`Python process exited with code ${code}`);
   // });
 })
-
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT);
