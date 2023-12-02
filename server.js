@@ -11,10 +11,7 @@ app.post('/plot',(req,res)=>{
 
   pythonProcess.stdout.on('data', (data) => {
     // console.log(`Python stdout: ${data}`); 
-    let ans = {
-      data:data
-    }
-    res.json(ans);
+    res.send(ans);
   });
   pythonProcess.stderr.on('data', (data) => {
     console.error(`Python stderr: ${data}`);
