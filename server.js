@@ -6,8 +6,7 @@ app.use(cors());
 
 const { spawn } = require('child_process');
 
-app.post('/plot',(req,res)=>{
-  const pt = spawn('python', ['--version']);
+const pt = spawn('pip install numpy', []);
 
   pt.stdout.on('data', (data) => {
     console.log(`pt stdout: ${data}`); 
@@ -18,6 +17,9 @@ app.post('/plot',(req,res)=>{
     res.status(400).json(data);
   });
 
+
+app.post('/plot',(req,res)=>{
+  
   // const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, req.body.k, '.\jpg']);
 
   // pythonProcess.stdout.on('data', (data) => {
