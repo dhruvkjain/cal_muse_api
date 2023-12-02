@@ -6,7 +6,7 @@ app.use(cors());
 
 const { spawn } = require('child_process');
 
-const pt = spawn('pip install numpy', []);
+const pt = spawn('pip', ['--version']);
 
   pt.stdout.on('data', (data) => {
     console.log(`pt stdout: ${data}`); 
