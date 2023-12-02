@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json({ extended: false }));
 const cors = require('cors');
-app.use(cors());
+app.use(cors());  
 
 const { spawn } = require('child_process');
 
