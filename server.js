@@ -11,6 +11,7 @@ app.post('/plot',(req,res)=>{
 
   pt.stdout.on('data', (data) => {
     console.log(`pt stdout: ${data}`); 
+    res.setHeader('Content-Type', 'text/plain');
     res.send(data);
   });
   pt.stderr.on('data', (data) => {
