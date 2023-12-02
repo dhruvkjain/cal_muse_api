@@ -10,11 +10,9 @@ const pt = spawn('pip', ['--version']);
 
   pt.stdout.on('data', (data) => {
     console.log(`pt stdout: ${data}`); 
-    res.send(data);
   });
   pt.stderr.on('data', (data) => {
     console.error(`pt stderr: ${data}`);
-    res.status(400).json(data);
   });
 
 
