@@ -6,7 +6,7 @@ app.use(cors());
 
 const { spawn } = require('child_process');
 
-const installProcess = spawnspawn('pip', ['install', 'numpy']);
+const installProcess = spawn('pip', ['install', 'numpy']);
 installProcess.on('close', (code) => {
   if (code === 0) {
     console.log(`Package numpy installed successfully`);
