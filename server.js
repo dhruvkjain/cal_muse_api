@@ -6,23 +6,76 @@ app.use(cors());
 
 const { spawn } = require('child_process');
 
-const installProcess = spawn('pip', ['install', 'numpy']);
-installProcess.on('close', (code) => {
+
+// -----------------------------------------------------------------------
+const installProcessn = spawn('pip', ['install', 'numpy']);
+installProcessn.on('close', (code) => {
   if (code === 0) {
     console.log(`Package numpy installed successfully`);
   } else {
     console.error(`Error installing numpy`);
   }
 });
-
-// Capture and log the output of the process
-installProcess.stdout.on('data', (data) => {
+installProcessn.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
 });
-
-installProcess.stderr.on('data', (data) => {
+installProcessn.stderr.on('data', (data) => {
   console.error(`stderr: ${data}`);
 });
+
+// -----------------------------------------------------------------------
+const installProcessscipy = spawn('pip', ['install', 'scipy']);
+installProcessscipy.on('close', (code) => {
+  if (code === 0) {
+    console.log(`Package scipy installed successfully`);
+  } else {
+    console.error(`Error installing scipy`);
+  }
+});
+installProcessscipy.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+installProcessscipy.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+
+
+// -----------------------------------------------------------------------
+const installProcessmatplotlib = spawn('pip', ['install', 'matplotlib']);
+installProcessmatplotlib.on('close', (code) => {
+  if (code === 0) {
+    console.log(`Package matplotlib installed successfully`);
+  } else {
+    console.error(`Error installing matplotlib`);
+  }
+});
+installProcessmatplotlib.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+installProcessmatplotlib.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+
+// -----------------------------------------------------------------------
+const installProcessmpl_toolkits = spawn('pip', ['install', 'mpl_toolkits']);
+installProcessmpl_toolkits.on('close', (code) => {
+  if (code === 0) {
+    console.log(`Package mpl_toolkits installed successfully`);
+  } else {
+    console.error(`Error installing mpl_toolkits`);
+  }
+});
+installProcessmpl_toolkits.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+installProcessmpl_toolkits.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+
+
+
+
+
 
 app.post('/plot',(req,res)=>{
   
