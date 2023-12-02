@@ -7,6 +7,17 @@ app.use(cors());
 const { spawn } = require('child_process');
 
 app.post('/plot',(req,res)=>{
+  const pt = spawn('python', ['--version']);
+
+  pt.stdout.on('data', (data) => {
+    console.log(`pt stdout: ${data}`); 
+    res.send(data);
+  });
+  pt.stderr.on('data', (data) => {
+    console.error(`pt stderr: ${data}`);
+    res.status(400).json(data);
+  });
+
   const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, req.body.k, '.\jpg']);
 
   pythonProcess.stdout.on('data', (data) => {
