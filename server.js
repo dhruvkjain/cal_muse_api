@@ -79,19 +79,19 @@ installProcessmpl_toolkits.stderr.on('data', (data) => {
 
 app.post('/plot',(req,res)=>{
   
-  const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, req.body.k, '.\jpg']);
+  let ranNum ;
+  do{
+    const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, '.\jpg']);
+    pythonProcess.stdout.on('data', (data) => {
+      ranNum = data;
+      res.send(data);
+    });
+    pythonProcess.stderr.on('data', (data) => {
+      ranNum = "problem";
+      // res.status(400).json(data);
+    });
+  }while((ranNum != "problem"));
 
-  pythonProcess.stdout.on('data', (data) => {
-    // console.log(`Python stdout: ${data}`); 
-    res.send(data);
-  });
-  pythonProcess.stderr.on('data', (data) => {
-    console.error(`Python stderr: ${data}`);
-    res.status(400).json(data);
-  });
-  pythonProcess.on('close', (code) => {
-    console.log(`Python process exited with code ${code}`);
-  });
 })
 
 
