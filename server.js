@@ -87,7 +87,7 @@ app.post('/plot',(req,res)=>{
     });
     pythonProcess.stderr.on('data', (data) => {
       ranNum = "problem";
-      // res.status(400).json(data);
+      res.status(400).json(data);
     });
 
 })
