@@ -57,20 +57,20 @@ installProcessmatplotlib.stderr.on('data', (data) => {
 });
 
 // -----------------------------------------------------------------------
-const installProcessmpl_toolkits = spawn('pip', ['install', 'mpl_toolkits']);
-installProcessmpl_toolkits.on('close', (code) => {
-  if (code === 0) {
-    console.log(`Package mpl_toolkits installed successfully`);
-  } else {
-    console.error(`Error installing mpl_toolkits`);
-  }
-});
-installProcessmpl_toolkits.stdout.on('data', (data) => {
-  console.log(`stdout: ${data}`);
-});
-installProcessmpl_toolkits.stderr.on('data', (data) => {
-  console.error(`stderr: ${data}`);
-});
+// const installProcessmpl_toolkits = spawn('pip', ['install', 'mpl_toolkits']);
+// installProcessmpl_toolkits.on('close', (code) => {
+//   if (code === 0) {
+//     console.log(`Package mpl_toolkits installed successfully`);
+//   } else {
+//     console.error(`Error installing mpl_toolkits`);
+//   }
+// });
+// installProcessmpl_toolkits.stdout.on('data', (data) => {
+//   console.log(`stdout: ${data}`);
+// });
+// installProcessmpl_toolkits.stderr.on('data', (data) => {
+//   console.error(`stderr: ${data}`);
+// });
 
 
 
