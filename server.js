@@ -90,7 +90,7 @@ app.post('/plot',(req,res)=>{
       ranNum = "problem";
       res.status(400).json("problem");
     });
-  } , 4000)
+  } , 10000)
 })
 
 
