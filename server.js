@@ -80,6 +80,7 @@ installProcessmpl_toolkits.stderr.on('data', (data) => {
 app.post('/plot',(req,res)=>{
   
   let ranNum ;
+  setTimeout(()=>{
     const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, req.body.k, '.\jpg']);
     pythonProcess.stdout.on('data', (data) => {
       ranNum = data;
@@ -89,7 +90,7 @@ app.post('/plot',(req,res)=>{
       ranNum = "problem";
       res.status(400).json(data);
     });
-
+  } , 4000)
 })
 
 
