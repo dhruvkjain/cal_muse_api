@@ -57,20 +57,20 @@ installProcessmatplotlib.stderr.on('data', (data) => {
 });
 
 // -----------------------------------------------------------------------
-// const installProcessmpl_toolkits = spawn('pip', ['install', 'mpl_toolkits']);
-// installProcessmpl_toolkits.on('close', (code) => {
-//   if (code === 0) {
-//     console.log(`Package mpl_toolkits installed successfully`);
-//   } else {
-//     console.error(`Error installing mpl_toolkits`);
-//   }
-// });
-// installProcessmpl_toolkits.stdout.on('data', (data) => {
-//   console.log(`stdout: ${data}`);
-// });
-// installProcessmpl_toolkits.stderr.on('data', (data) => {
-//   console.error(`stderr: ${data}`);
-// });
+const installProcessmpl_toolkits = spawn('pip', ['install', 'pypuf']);
+installProcessmpl_toolkits.on('close', (code) => {
+  if (code === 0) {
+    console.log(`Package pypuf installed successfully`);
+  } else {
+    console.error(`Error installing pypuf`);
+  }
+});
+installProcessmpl_toolkits.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+installProcessmpl_toolkits.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
 
 
 
@@ -80,8 +80,8 @@ installProcessmatplotlib.stderr.on('data', (data) => {
 app.post('/plot',(req,res)=>{
   
   let ranNum ;
-  setTimeout(()=>{
-    const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, req.body.k, '.\jpg']);
+  // setTimeout(()=>{
+    const pythonProcess = spawn('python', ['test.py', req.body.x, req.body.y, req.body.z, '.\jpg']);
     pythonProcess.stdout.on('data', (data) => {
       ranNum = data;
       res.send(data);
@@ -90,7 +90,7 @@ app.post('/plot',(req,res)=>{
       ranNum = "problem";
       res.status(400).json("problem");
     });
-  } , 10000)
+  // } , 10000)
 })
 
 
